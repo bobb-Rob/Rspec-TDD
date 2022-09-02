@@ -1,4 +1,5 @@
 class Solver
+  # factorial method
   def factorial(number)
     return 'Number Is Negative' if number.negative?
     return 1 if number.zero?
@@ -6,12 +7,14 @@ class Solver
     number * factorial(number - 1)
   end
 
+  # reverse method
   def reverse(string)
     return 'Error' unless string.is_a?(String)
 
     string.reverse
   end
 
+  # fizz
   def fizzbuzz(number)
     return 'Is an integer' unless number.is_a? Integer
     return 'FizzBuzz' if (number % 15).zero?
