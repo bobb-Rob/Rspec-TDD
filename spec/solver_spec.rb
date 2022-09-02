@@ -1,65 +1,51 @@
-require 'yaml'
+require 'rspec'
+require './solver'
 
-describe 'Solver' do
-  # Create a new Solver object for each test
-  before :each do
+describe 'solver' do
+  before(:each) do
     @solver = Solver.new
   end
-
-  # Test the factorial method
-  describe '#factorial' do
-    it 'If n is 0, return 1' do
-      number = 0
-      expect(@solver.factorial(number)).to eq(1)
+  context '#factorial' do
+    it 'should return 24 for factorial 4' do
+      expect(@solver.factorial(4)).to eq 24
     end
-
-    it 'Should take a positive integer and return the factorial of that number' do
-      number = 5
-      expect(@solver.factorial(number)).to eq(120)
+    it 'should return 1 for factorial 0' do
+      expect(@solver.factorial(0)).to eq 1
     end
-
-    it 'Should take a negative integer and return an error message' do
-      number = -4
-      expect(@solver.factorial(number)).to eq('Please enter a positive integer')
+    it 'should return 1 for factorial of 1' do
+      expect(@solver.factorial(1)).to eq 1
+    end
+    it 'should return 2 for factorial of 2' do
+      expect(@solver.factorial(2)).to eq 2
+    end
+    it 'should return "Number Is Negative" for factorial -1' do
+      expect(@solver.factorial(-1)).to eq 'Number Is Negative'
+    end
+  end
+  context 'Reverse' do
+    it 'should return "olleh" for "hello"' do
+      expect(@solver.reverse('hello')).to eq 'olleh'
+    end
+    it 'should return "error" for "error"' do
+      expect(@solver.reverse(1)).to eq 'Error'
     end
   end
 
-  # Test the reverse method
-  describe '#reverse' do
-    it 'If string is hello, return olleh' do
-      string = 'hello'
-      expect(@solver.reverse(string)).to eq('olleh')
+  context 'fizzbuzz' do
+    it 'should return "Fizz" for 3' do
+      expect(@solver.fizzbuzz(3)).to eq 'Fizz'
     end
-
-    it 'If string is morning, return gninrom' do
-      string = 'morning'
-      expect(@solver.reverse(string)).to eq('gninrom')
+    it 'should return "Buzz" for 5' do
+      expect(@solver.fizzbuzz(5)).to eq 'Buzz'
     end
-
-    it 'If string is empty reutn nil' do
-      string = ''
-      expext(@solver.reverse(string)).to eq('')
+    it 'should return "FizzBuzz" for 15' do
+      expect(@solver.fizzbuzz(15)).to eq 'FizzBuzz'
     end
-  end
-
-  # Test the fizzbuzz method
-  describe '#fizzbuzz' do
-    it 'If number is divisible by 3, return fizz' do
-      number = 3
-      expect(@solver.fizzbuzz(number)).to eq('fizz')
+    it 'should return "Fizz" for 6' do
+      expect(@solver.fizzbuzz(6)).to eq 'Fizz'
     end
-    it 'If number is divisible by 5, return buzz' do
-      number = 5
-      expect(@solver.fizzbuzz(number)).to eq('buzz')
-    end
-    it 'If number is divisible by 3 and 5, return fizzbuzz' do
-      number = 15
-      expect(@solver.fizzbuzz(number)).to eq('fizzbuzz')
-    end
-    it 'If number is not divisible by 3 or 5, return the number' do
-      number = 7
-      expect(@solver.fizzbuzz(number)).to eq(7)
+    it 'should return "7" for 7' do
+      expect(@solver.fizzbuzz(7)).to eq '7'
     end
   end
 end
-
