@@ -1,0 +1,51 @@
+require 'rspec'
+require './solver'
+
+describe 'solver' do
+  before(:each) do
+    @solver = Solver.new
+  end
+  context '#factorial' do
+    it 'should return 24 for factorial 4' do
+      expect(@solver.factorial(4)).to eq 24
+    end
+    it 'should return 1 for factorial 0' do
+      expect(@solver.factorial(0)).to eq 1
+    end
+    it 'should return 1 for factorial of 1' do
+      expect(@solver.factorial(1)).to eq 1
+    end
+    it 'should return 2 for factorial of 2' do
+      expect(@solver.factorial(2)).to eq 2
+    end
+    it 'should return "Number Is Negative" for factorial -1' do
+      expect(@solver.factorial(-1)).to eq 'Number Is Negative'
+    end
+  end
+  context 'Reverse' do
+    it 'should return "olleh" for "hello"' do
+      expect(@solver.reverse('hello')).to eq 'olleh'
+    end
+    it 'should return "error" for "error"' do
+      expect(@solver.reverse(1)).to eq 'Error'
+    end
+  end
+
+  context 'fizzbuzz' do
+    it 'should return "Fizz" for 3' do
+      expect(@solver.fizzbuzz(3)).to eq 'Fizz'
+    end
+    it 'should return "Buzz" for 5' do
+      expect(@solver.fizzbuzz(5)).to eq 'Buzz'
+    end
+    it 'should return "FizzBuzz" for 15' do
+      expect(@solver.fizzbuzz(15)).to eq 'FizzBuzz'
+    end
+    it 'should return "Fizz" for 6' do
+      expect(@solver.fizzbuzz(6)).to eq 'Fizz'
+    end
+    it 'should return "7" for 7' do
+      expect(@solver.fizzbuzz(7)).to eq '7'
+    end
+  end
+end
